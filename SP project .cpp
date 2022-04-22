@@ -236,13 +236,12 @@ void open()
 		case 4:
 			BookTickets();
 		case 5:
-			ShowTicketsInfo();
 			break;
 		case 6:
-			Bus_Classes();
+
 			break;
 		case 7:
-			UsersInformation();
+			
 			break;
 		case 8:
 			CancelReservatin();
