@@ -8,6 +8,8 @@ int mx_buses = 0;
 int mx_persons = 0;
 int mx_users = 0;
 int mx_tickets = 0;
+int Mx_Tickets = 0;
+
 string destination[10];
 struct buses
 {
@@ -117,12 +119,12 @@ void Show_Available_buses()
 	cout << "Bus numbers | No of seats |  Available No of Seats | No of trips | Trips time \n\n----------------------------------------------------------------------------\n\n";
 	for (int i = 0; i < 10; i++)
 	{
-		cout << temp[i].BusNumber << ' ' << temp[i].No_Of_Seats << ' ' << temp[i].Available_No_Of_Seats << ' ' << temp[i].No_Of_Trips<< ' ' ;
+		cout << temp[i].BusNumber << ' ' << temp[i].No_Of_Seats << ' ' << temp[i].Available_No_Of_Seats << ' ' << temp[i].No_Of_Trips << ' ';
 		for (int j = 0; j < 3; j++)
-			cout<<temp[i].TripsTime1[j] << ' ' ;
+			cout << temp[i].TripsTime1[j] << ' ';
 
 		cout << "\n\n";
-			
+
 
 	}
 }
@@ -234,19 +236,18 @@ void open()
 		case 4:
 			BookTickets();
 		case 5:
-
+			ShowTicketsInfo();
 			break;
 		case 6:
-
+			Bus_Classes();
 			break;
 		case 7:
-
+			UsersInformation();
 			break;
 		case 8:
 			CancelReservatin();
 			break;
 		case 9:
-			CancelReservatin();
 			break;
 		case 10:
 			break;
@@ -259,7 +260,7 @@ void open()
 
 			continue;
 		}
-		cout << "   you want do anothr(n/y)?  :";
+		cout << "   you want do another(n/y)?  :";
 
 		cin >> Continue;
 
@@ -273,7 +274,7 @@ void ShowPrices()
 	system("cls");
 	int destination;
 	int Bus_Class;
-	string destinations[10]= { "From Cairo to Sharm el_Sheikh class ", "From Cairo to Hurghada", "From Cairo to Alexandria", "From Cairo to Marsa Matrouh", "From Cairo to North_Coast", "From Cairo to Dahab", "From Cairo to Fayoum" };
+	string destinations[10] = {"From:Cairo..to:Sharm el_Sheikh", "From:Cairo..to:Hurghada", "From:Cairo..to:Alexandria", "From:Cairo..to:MarsaMatrouh", "From:Cairo..to:North_Coast", "From:Cairo..to:Dahab", "From:Cairo..to:Fayoum"};
 	cout << "1.From Cairo to Sharm el_Sheikh\t Class A --> 400L.E    Class B --> 300L.E\n\n";
 	cout << "2.From Cairo to Hurghada       \t Class A --> 350L.E    Class B --> 280L.E \n\n";
 	cout << "3.From Cairo to Alexandria     \t Class A --> 200L.E    Class B --> 150L.E \n\n";
@@ -292,86 +293,87 @@ void BookTickets()
 	char again;
 
 	do{
-	   cout << "choosing Bus: \n\n";
-	   Show_Available_buses();
-	   cout << "Enter bus number : ";
-	   cin >> Bus_Number;
-	   cout << "Enter number (from 1 to 3) to choose trip time : ";
-	   cin >> triptime;
-	   cout << "Please enter the number of tickets you want to book: ";
-	   cin >> No_Of_Tickets;
-	   temp[Bus_Number - 1].Available_No_Of_Seats -= No_Of_Tickets;
-	   cout << "Enter the data of travelling (d/m/y): ";
-	   cin >> date;
-	   ShowPrices();
-	   cout << "\n\n";
-	   cout << "Enter number to choose destination : ";
-	   cin >> Destination;
-	   cout << "Class A Or B ? ";
-	   cin >> Class;
-	   system("cls");
-	   cout << "\t\t ***** User informtaion ******* \n\n";
-	   cout << "Please Enter your name: ";
-	   cin >> Users[i].name;
-	   cout << "Enter age: ";
-	   cin >> Users[i].Age;
-	   cout << "Enter phone number: ";
-	   cin >> Users[i].PhoneNumber;
-	   cout << "Enter your Email address: ";
-	   cin >> Users[i].Email;
-	   cout << "\n\n";
-	   Users[i].No_Of_Buses_They_Booked = 0;
-	   Users[i].No_Of_Seats_They_Chose = 0;
-	   Users[i].No_Of_Seats_They_Chose += No_Of_Tickets;
-	   Users[i].No_Of_Buses_They_Booked += 1;
-	   cout << "Booking succeded \n\n";
-	   cout << "\t\t***************************************** \n \n";
-	   cout << "\t\t| Thank you for choosing our services" << ch << "\t|\n";
-	   cout << "\t\t|                                        |\n";
-	   cout << "\t\t-----------------------------------------\n\n\n";
+		cout << "choosing Bus: \n\n";
+		Show_Available_buses();
+		cout << "Enter bus number : ";
+		cin >> Bus_Number;
+		cout << "Enter number (from 1 to 3) to choose trip time : ";
+		cin >> triptime;
+		cout << "Please enter the number of tickets you want to book: ";
+		cin >> No_Of_Tickets;
+		temp[Bus_Number - 1].Available_No_Of_Seats -= No_Of_Tickets;
+		cout << "Enter the data of travelling (d/m/y): ";
+		cin >> date;
+		ShowPrices();
+		cout << "\n\n";
+		cout << "Enter number to choose destination : ";
+		cin >> Destination;
+		cout << "Class A Or B ? ";
+		cin >> Class;
+		system("cls");
+		cout << "\t\t ***** User informtaion ******* \n\n";
+		cout << "Please Enter your name: ";
+		cin >> Users[i].name;
+		cout << "Enter age: ";
+		cin >> Users[i].Age;
+		cout << "Enter phone number: ";
+		cin >> Users[i].PhoneNumber;
+		cout << "Enter your Email address: ";
+		cin >> Users[i].Email;
+		cout << "\n\n";
+		Users[i].No_Of_Buses_They_Booked = 0;
+		Users[i].No_Of_Seats_They_Chose = 0;
+		Users[i].No_Of_Seats_They_Chose += No_Of_Tickets;
+		Users[i].No_Of_Buses_They_Booked += 1;
+		cout << "Booking succeded \n\n";
+		cout << "\t\t***************************************** \n \n";
+		cout << "\t\t| Thank you for choosing our services" << ch << "\t|\n";
+		cout << "\t\t|                                        |\n";
+		cout << "\t\t-----------------------------------------\n\n\n";
+		int T;
+		for ( T = 0; T < No_Of_Tickets; T++)
+		{
+			ticket[T].ID = temp[Bus_Number].Available_No_Of_Seats + 1 + T;
+			ticket[T].Bus_Take_Of_Time = temp[Bus_Number - 1].TripsTime1[triptime - 1];
+			ticket[T].Date_Of_Travelling = date;
+			ticket[T].BusNumber = Bus_Number;
+			ticket[T].BusClass = Class;
+			ticket[T].destination = destination[Destination - 1];
+			if (Destination == 1 && Class == 'A')
+				ticket[T].Price = "400L.E";
+			else if (Destination == 1 && Class == 'B')
+				ticket[T].Price = "300L.E";
+			else if (Destination == 2 && Class == 'A')
+				ticket[T].Price = "350L.E";
+			else if (Destination == 2 && Class == 'B')
+				ticket[T].Price = "200L.E";
+			else if (Destination == 3 && Class == 'A')
+				ticket[T].Price = "200L.E";
+			else if (Destination == 3 && Class == 'B')
+				ticket[T].Price = "150L.E";
+			else if (Destination == 4 && Class == 'A')
+				ticket[T].Price = "300L.E";
+			else if (Destination == 4 && Class == 'B')
+				ticket[T].Price = "250L.E";
+			else if (Destination == 5 && Class == 'A')
+				ticket[T].Price = "450L.E";
+			else if (Destination == 5 && Class == 'B')
+				ticket[T].Price = "400L.E";
+			else if (Destination == 6 && Class == 'A')
+				ticket[T].Price = "500L.E";
+			else if (Destination == 6 && Class == 'B')
+				ticket[T].Price = "400L.E";
+			else if (Destination == 7 && Class == 'A')
+				ticket[T].Price = "200L.E";
+			else if (Destination == 7 && Class == 'B')
+				ticket[T].Price = "180L.E";
 
-	   for (int T = 0; T < No_Of_Tickets; T++)
-	   {
-		   ticket[T].ID = (temp[Bus_Number-1].No_Of_Seats- temp[Bus_Number - 1].Available_No_Of_Seats) + i + 1 ;
-		   ticket[T].Bus_Take_Of_Time = temp[Bus_Number - 1].TripsTime1[triptime - 1];
-		   ticket[T].Date_Of_Travelling = date;
-		   ticket[T].BusNumber = Bus_Number;
-		   ticket[T].BusClass = Class;
-		   ticket[T].destination = destination[Destination - 1];
-		   if (Destination == 1 && Class == 'A')
-			   ticket[T].Price = "400L.E";
-		   else if (Destination == 1 && Class == 'B')
-			   ticket[T].Price = "300L.E";
-		   else if (Destination == 2 && Class == 'A')
-			   ticket[T].Price = "350L.E";
-		   else if (Destination == 2 && Class == 'B')
-			   ticket[T].Price = "200L.E";
-		   else if (Destination == 3 && Class == 'A')
-			   ticket[T].Price = "200L.E";
-		   else if (Destination == 3 && Class == 'B')
-			   ticket[T].Price = "150L.E";
-		   else if (Destination == 4 && Class == 'A')
-			   ticket[T].Price = "300L.E";
-		   else if (Destination == 4 && Class == 'B')
-			   ticket[T].Price = "250L.E";
-		   else if (Destination == 5 && Class == 'A')
-			   ticket[T].Price = "450L.E";
-		   else if (Destination == 5 && Class == 'B')
-			   ticket[T].Price = "400L.E";
-		   else if (Destination == 6 && Class == 'A')
-			   ticket[T].Price = "500L.E";
-		   else if (Destination == 6 && Class == 'B')
-			   ticket[T].Price = "400L.E";
-		   else if (Destination == 7 && Class == 'A')
-			   ticket[T].Price = "200L.E";
-		   else if (Destination == 7 && Class == 'B')
-			   ticket[T].Price = "180L.E";
-
-	   }
-	   cout << "Do you want to book again ? (y/n) ";
+		}
+		mx_tickets = T;
+		cout << "Do you want to book again ? (y/n) ";
 		cin >> again;
 		cout << "\n";
-		if(again=='y' || again=='Y')
+		if (again == 'y' || again == 'Y')
 			i++;
 		mx_users = i;
 	} while (again == 'y' || again == 'Y');
@@ -381,8 +383,8 @@ void BookTickets()
 void CancelReservatin()
 {
 	system("cls");
-	int buSNumber,NoOfTickets;
-	string Name,Phone,email;
+	int buSNumber, NoOfTickets;
+	string Name, Phone, email;
 	int i = 0;
 	bool found = false;
 	do
@@ -394,9 +396,9 @@ void CancelReservatin()
 		cin >> NoOfTickets;
 		cout << "Enter your name: ";
 		cin >> Name;
-		cout << "Enter your phone number ";
+		cout << "Enter your phone number: ";
 		cin >> Phone;
-		cout << "Enter your email address";
+		cout << "Enter your email address: ";
 		cin >> email;
 
 		if (Name == Users[i].name && Phone == Users[i].PhoneNumber && email == Users[i].Email)
@@ -404,17 +406,17 @@ void CancelReservatin()
 			found = true;
 			temp[i].Available_No_Of_Seats += NoOfTickets;
 			Users[i].No_Of_Seats_They_Chose -= NoOfTickets;
-			if (Users[i].No_Of_Seats_They_Chose!=0)
-				Users[i].No_Of_Buses_They_Booked -= 1;
-			else 
+			if (Users[i].No_Of_Seats_They_Chose == 0)
 				Users[i].No_Of_Buses_They_Booked = 0;
-			cout << "\n\t\tReservation has been canceled successfully.......... \n";
+			cout << "\n\t\tReservation has been canceled successfully.......... \n\n";
+
+				
 		}
 		else
 			cout << "Invalid data please try again..... \n";
-			i++;
+		i++;
 	} while (found == false);
-		
+
 
 }
 
@@ -426,7 +428,7 @@ void file_in()
 	while (another_file.good())
 	{
 		another_file >> temp[i].BusNumber >> temp[i].No_Of_Seats >> temp[i].Available_No_Of_Seats >> temp[i].No_Of_Trips;
-		for (int j = 0; j < 3; j++) 
+		for (int j = 0; j < 3; j++)
 			another_file >> temp[i].TripsTime1[j];
 		i++;
 	}
@@ -450,7 +452,7 @@ void file_in()
 		Tickets_file >> ticket[h].ID >> ticket[h].Bus_Take_Of_Time >> ticket[h].Date_Of_Travelling >> ticket[h].BusNumber >> ticket[h].BusClass >> ticket[h].destination >> ticket[h].Price;
 		h++;
 	}
-	mx_tickets = h;
+	Mx_Tickets = h;
 
 	Tickets_file.close();
 }
@@ -460,15 +462,15 @@ void file_out()
 	ofstream another_file("Buses.txt");
 	if (another_file.is_open())
 	{
-		for (int i = 0; i < mx_buses+1; i++)
+		for (int i = 0; i < mx_buses + 1; i++)
 		{
 			if (temp[i].Available_No_Of_Seats == 0)
 				continue;
 
-			another_file <<temp[i].BusNumber << ' ' << temp[i].No_Of_Seats << ' ' << temp[i].Available_No_Of_Seats << ' ' << temp[i].No_Of_Trips << ' ';
+			another_file << temp[i].BusNumber << ' ' << temp[i].No_Of_Seats << ' ' << temp[i].Available_No_Of_Seats << ' ' << temp[i].No_Of_Trips << ' ';
 			for (int j = 0; j < 3; j++)
-				another_file << temp[i].TripsTime1[j]<<' ';
-			
+				another_file << temp[i].TripsTime1[j] << ' ';
+
 			another_file << "\n";
 
 
@@ -476,12 +478,12 @@ void file_out()
 	}
 	another_file.close();
 
-	ofstream Persons_file("Persons.txt",ios::app);
+	ofstream Persons_file("Persons.txt", ios::app);
 	if (Persons_file.is_open())
 	{
-		for (int j = 0; j <mx_users+1; j++)
+		for (int j = 0; j < mx_users + 1; j++)
 		{
-			Persons_file << "\n" << Users[j].name << ' ' << Users[j].Age <<' '<< Users[j].PhoneNumber << ' ' << Users[j].Email << ' ' << Users[j].No_Of_Buses_They_Booked << ' ' <<Users[j].No_Of_Seats_They_Chose;
+			Persons_file << "\n" << Users[j].name << ' ' << Users[j].Age << ' ' << Users[j].PhoneNumber << ' ' << Users[j].Email << ' ' << Users[j].No_Of_Buses_They_Booked << ' ' << Users[j].No_Of_Seats_They_Chose;
 		}
 	}
 	Persons_file.close();
@@ -489,11 +491,11 @@ void file_out()
 	ofstream Tickets_file("Tickets.txt", ios::app);
 	if (Tickets_file.is_open())
 	{
-		for (int h = 0; h < mx_buses; h++)
+		for (int h = 0; h < mx_tickets; h++)
 		{
-			Tickets_file << "\n"<< ticket[h].ID << ' ' << ticket[h].Bus_Take_Of_Time << ' ' << ticket[h].Date_Of_Travelling << ' ' << ticket[h].BusNumber << ' ' <<ticket[h].BusClass  << ' ' << ticket[h].destination << ' ' << ticket[h].Price;
+			Tickets_file << "\n" << ticket[h].ID << ' ' << ticket[h].Bus_Take_Of_Time << ' ' << ticket[h].Date_Of_Travelling << ' ' << ticket[h].BusNumber << ' ' << ticket[h].BusClass << ' ' << ticket[h].destination << ' ' << ticket[h].Price;
 		}
 	}
-	Tickets_file.close();
 
+	Tickets_file.close();
 }
