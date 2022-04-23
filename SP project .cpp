@@ -10,7 +10,7 @@ int mx_users = 0;
 int mx_tickets = 0;
 int Mx_Tickets = 0;
 
-string destination[10];
+string destinations[] = { "FromCairotoSharmelSheikh", "From:Cairo..to:Hurghada", "From:Cairo..to:Alexandria", "From:Cairo..to:MarsaMatrouh", "From:Cairo..to:North_Coast", "From:Cairo..to:Dahab", "From:Cairo..to:Fayoum" };
 struct buses
 {
 	int BusNumber;
@@ -273,7 +273,6 @@ void ShowPrices()
 	system("cls");
 	int destination;
 	int Bus_Class;
-	string destinations[10] = {"From:Cairo..to:Sharm el_Sheikh", "From:Cairo..to:Hurghada", "From:Cairo..to:Alexandria", "From:Cairo..to:MarsaMatrouh", "From:Cairo..to:North_Coast", "From:Cairo..to:Dahab", "From:Cairo..to:Fayoum"};
 	cout << "1.From Cairo to Sharm el_Sheikh\t Class A --> 400L.E    Class B --> 300L.E\n\n";
 	cout << "2.From Cairo to Hurghada       \t Class A --> 350L.E    Class B --> 280L.E \n\n";
 	cout << "3.From Cairo to Alexandria     \t Class A --> 200L.E    Class B --> 150L.E \n\n";
@@ -337,7 +336,7 @@ void BookTickets()
 			ticket[T].Date_Of_Travelling = date;
 			ticket[T].BusNumber = Bus_Number;
 			ticket[T].BusClass = Class;
-			ticket[T].destination = destination[Destination - 1];
+			ticket[T].destination = destinations[Destination - 1];
 			if (Destination == 1 && Class == 'A')
 				ticket[T].Price = "400L.E";
 			else if (Destination == 1 && Class == 'B')
@@ -488,10 +487,13 @@ void file_out()
 	Persons_file.close();
 
 	ofstream Tickets_file("Tickets.txt", ios::app);
+	
 	if (Tickets_file.is_open())
 	{
+		
 		for (int h = 0; h < mx_tickets; h++)
 		{
+			
 			Tickets_file << "\n" << ticket[h].ID << ' ' << ticket[h].Bus_Take_Of_Time << ' ' << ticket[h].Date_Of_Travelling << ' ' << ticket[h].BusNumber << ' ' << ticket[h].BusClass << ' ' << ticket[h].destination << ' ' << ticket[h].Price;
 		}
 	}
