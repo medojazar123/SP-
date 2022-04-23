@@ -240,7 +240,7 @@ void open()
 			ShowTicketsInfo();
 			break;
 		case 6:
-			void Bus_Classes();
+	        Bus_Classes();
 			break;
 		case 7:
 
@@ -327,7 +327,7 @@ void BookTickets()
 		cout << "Booking succeded \n\n";
 		cout << "\t\t***************************************** \n \n";
 		cout << "\t\t| Thank you for choosing our services" << ch << "\t|\n";
-		cout << "\t\t|                                        |\n";
+		cout << "\t\t|                                       |\n";
 		cout << "\t\t-----------------------------------------\n\n\n";
 		int T;
 		for (T = 0; T < No_Of_Tickets; T++)
