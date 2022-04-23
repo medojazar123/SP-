@@ -28,7 +28,7 @@ struct persons
 {
 	string name;
 	int Age;
-	string PhoneNumber;
+	int PhoneNumber;
 	string Email;
 	int No_Of_Buses_They_Booked;
 	int No_Of_Seats_They_Chose;
@@ -69,6 +69,8 @@ void CancelReservatin();
 int main()
 {
 	file_in();
+	open();
+	file_out();
 
 	/*
 	string username = "admin";
@@ -93,9 +95,7 @@ int main()
 	*/
 
 
-	open();
-
-	file_out();
+	
 }
 
 void display()
@@ -235,7 +235,9 @@ void open()
 			break;
 		case 4:
 			BookTickets();
+			break;
 		case 5:
+			ShowTicketsInfo();
 			break;
 		case 6:
 
@@ -264,7 +266,6 @@ void open()
 		cin >> Continue;
 
 	} while (Continue == 'y');
-
 
 }
 
@@ -371,18 +372,64 @@ void BookTickets()
 		cout << "Do you want to book again ? (y/n) ";
 		cin >> again;
 		cout << "\n";
-		if (again == 'y' || again == 'Y')
-			i++;
+		if (again == 'Y' || again == 'y')
+		i++;
 		mx_users = i;
 	} while (again == 'y' || again == 'Y');
 
 }
+void ShowTicketsInfo()
+{
+	system("cls");
+	bool foundd = false;
+	string namme;
+	string emaiil;
+	int phonee;
 
+	do
+	{
+	cout << "\t\t*************************************\n";
+	cout << "\t\t|\tTicket infromations\t   |\n";
+	cout << "\t\t|__________________________________|\n\n";
+
+
+
+	cout << "Enter your name: ";
+	cin >> namme;
+	cout << "Enter your Email: ";
+	cin >> emaiil;
+	cout << "Enter your phone number: ";
+	cin >> phonee;
+	int i,founded_t;
+	for (i = 0; i < Mx_Tickets; i++)
+	{
+		if (Users[i].name == namme || Users[i].Email == emaiil || Users[i].PhoneNumber == phonee)
+			foundd = true;
+		founded_t = i;
+		break;
+	}
+	if (foundd)
+	{
+		cout << "\n\n***************************************************************************\n\n";
+		cout << "ID: " << ticket[founded_t].ID << "\t\t" << "Bus Take of time: " << ticket[founded_t].Bus_Take_Of_Time << "\n\n" << "Date of travelling: " << ticket[founded_t].Date_Of_Travelling << "\t\t" << "Bus number: " << ticket[founded_t].BusNumber << "\t\t" << "Bus class: " << ticket[founded_t].BusClass << "\n\n" << "Your destination: " << ticket[founded_t].destination << "\t\t" << "Price: " << ticket[founded_t].Price << "\n\n";
+		cout << "\n\n***************************************************************************\n\n";
+	}
+	else
+		cout << "Invalid date try again..........\n\n";
+
+}while (foundd == false);	
+
+}
+
+void UsersInformation()
+{
+
+}
 void CancelReservatin()
 {
 	system("cls");
-	int buSNumber, NoOfTickets;
-	string Name, Phone, email;
+	int buSNumber, NoOfTickets,Phone;
+	string Name,email;
 	int i = 0;
 	bool found = false;
 	do
@@ -479,7 +526,7 @@ void file_out()
 	ofstream Persons_file("Persons.txt", ios::app);
 	if (Persons_file.is_open())
 	{
-		for (int j = 0; j < mx_users + 1; j++)
+		for (int j = 0; j < mx_users+1; j++)
 		{
 			Persons_file << "\n" << Users[j].name << ' ' << Users[j].Age << ' ' << Users[j].PhoneNumber << ' ' << Users[j].Email << ' ' << Users[j].No_Of_Buses_They_Booked << ' ' << Users[j].No_Of_Seats_They_Chose;
 		}
@@ -499,4 +546,5 @@ void file_out()
 	}
 
 	Tickets_file.close();
+
 }
