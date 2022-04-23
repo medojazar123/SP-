@@ -424,21 +424,21 @@ void Bus_Classes()
 {
 	system("cls");
 	char ch, more;
-	cout << "We have 2 classes ( A , B ) \n";
+	cout << "We have 2 classes ( A , B ) \n\n";
 
 	do {
-		cout << " Please enter the class you want to information about : \n ";
+		cout << " Please enter the class you want to inform about : ";
 		cin >> ch;
 		switch (ch)
 		{
 		case 'a':
 		case 'A':
-			cout << " A class : \n" << "1. air conditioner \n" << " 2. one trip ( Less time to reach )\n" << " 3. The latest vehicle releases\n"
-				<< " 4. super comfortable\n";
+			cout << " A class : \n\n" << "1. air conditioner \n" << "2. one trip ( Less time to reach )\n" << "3. The latest vehicle releases\n"
+				<< "4. super comfortable\n\n";
 			break;
 		case 'b':
 		case 'B':
-			cout << " B class : \n" << " 1. cheap \n" << " 2. many stations \n" << " 3. Equipped for long trips \n";
+			cout << " B class : \n\n" << "1. cheap \n" << "2. many stations \n" << "3. Equipped for long trips \n";
 			break;
 		}
 		cout << " do you want another class \n (y , n )";
@@ -497,6 +497,7 @@ void file_in()
 	int i = 0;
 	while (another_file.good())
 	{
+		
 		another_file >> temp[i].BusNumber >> temp[i].No_Of_Seats >> temp[i].Available_No_Of_Seats >> temp[i].No_Of_Trips;
 		for (int j = 0; j < 3; j++)
 			another_file >> temp[i].TripsTime1[j];
@@ -509,6 +510,7 @@ void file_in()
 	int j = 0;
 	while (persons_file.good())
 	{
+	
 		persons_file >> Users[j].name >> Users[j].Age >> Users[j].PhoneNumber >> Users[j].Email >> Users[j].No_Of_Buses_They_Booked >> Users[j].No_Of_Seats_They_Chose;
 		i++;
 	}
