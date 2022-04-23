@@ -240,7 +240,7 @@ void open()
 			ShowTicketsInfo();
 			break;
 		case 6:
-
+	                void Bus_Classes();
 			break;
 		case 7:
 			
@@ -420,7 +420,33 @@ void ShowTicketsInfo()
 }while (foundd == false);	
 
 }
+}
+void Bus_Classes()
+{
+	system("cls");
+	char ch, more;
+	cout << "We have 2 classes ( A , B ) \n";
 
+	do {
+		cout << " Please enter the class you want to information about : \n " ;
+		cin >> ch;
+		switch (ch)
+		{
+		case 'a':
+		case 'A':
+			cout << " A class : \n" << "1. air conditioner \n" << " 2. one trip ( Less time to reach )\n" << " 3. The latest vehicle releases\n"
+				<< " 4. super comfortable\n";
+			break;
+		case 'b':
+		case 'B':
+			cout << " B class : \n" << " 1. cheap \n" << " 2. many stations \n" << " 3. Equipped for long trips \n";
+			break;
+		}
+		cout << " do you want another class \n (y , n )";
+		cin >> more;
+	} while (more == 'y' || more == 'Y');  
+
+}
 void UsersInformation()
 {
 
