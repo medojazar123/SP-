@@ -50,6 +50,13 @@ struct Tickets
 	string Price;
 }ticket[50];
 
+struct drivers
+{
+	int ID;
+	float rate;
+	
+}driver[10];
+
 
 void file_in();
 void file_out();
@@ -61,9 +68,10 @@ void PaymentMethods();
 void BookTickets();
 void ShowTicketsInfo();
 void Bus_Classes();
+void driver_info();
 void UsersInformation();
-
 void CancelReservatin();
+
 
 
 int main()
@@ -76,7 +84,7 @@ int main()
 	string username = "admin";
 	string password = "1234";
 	bool correct = false;
-	cout << "\t \t  Welcome to ** Bus Reservation system **  \n\n";
+	cout << "\t \t  Welcome to * Bus Reservation system *  \n\n";
 	do{
 	cout << "Enter Username: ";
 	cin >> username;
@@ -85,12 +93,11 @@ int main()
 	cin >> password;
 	if (username == "admin" && password == "1234")
 	{
-	cout << "\n\t\t ** success...... ** \n \n";
+	cout << "\n\t\t * success...... * \n \n";
 	correct = true;
 	}
 	else
 	cout << "\n \n \t \t Wrong username or password try again........ \n \n";
-
 	} while (correct == false);
 	*/
 
@@ -100,7 +107,7 @@ int main()
 
 void display()
 {
-	cout << "\t\t***************************************** \n \n";
+	cout << "\t\t*************** \n \n";
 	cout << "\t\t| Wecome  to Bus Reservation System      |\n";
 	cout << "\t\t|                                        |\n";
 	cout << "\t\t-----------------------------------------\n\n\n";
@@ -115,7 +122,7 @@ void display()
 void Show_Available_buses()
 {
 	system("cls");
-	cout << "****************************************************************************** \n \n";
+	cout << "************************** \n \n";
 	cout << "Bus numbers | No of seats |  Available No of Seats | No of trips | Trips time \n\n----------------------------------------------------------------------------\n\n";
 	for (int i = 0; i < 10; i++)
 	{
@@ -240,7 +247,7 @@ void open()
 			ShowTicketsInfo();
 			break;
 		case 6:
-	        Bus_Classes();
+			Bus_Classes();
 			break;
 		case 7:
 
@@ -291,7 +298,7 @@ void BookTickets()
 	int i = 0;
 	char again;
 
-	do{
+	do {
 		cout << "choosing Bus: \n\n";
 		Show_Available_buses();
 		cout << "Enter bus number : ";
@@ -310,7 +317,7 @@ void BookTickets()
 		cout << "Class A Or B ? ";
 		cin >> Class;
 		system("cls");
-		cout << "\t\t ***** User informtaion ******* \n\n";
+		cout << "\t\t ** User informtaion **** \n\n";
 		cout << "Please Enter your name: ";
 		cin >> Users[i].name;
 		cout << "Enter age: ";
@@ -325,9 +332,9 @@ void BookTickets()
 		Users[i].No_Of_Seats_They_Chose += No_Of_Tickets;
 		Users[i].No_Of_Buses_They_Booked += 1;
 		cout << "Booking succeded \n\n";
-		cout << "\t\t***************************************** \n \n";
+		cout << "\t\t*************** \n \n";
 		cout << "\t\t| Thank you for choosing our services" << ch << "\t|\n";
-		cout << "\t\t|                                       |\n";
+		cout << "\t\t|                                        |\n";
 		cout << "\t\t-----------------------------------------\n\n\n";
 		int T;
 		for (T = 0; T < No_Of_Tickets; T++)
@@ -388,9 +395,9 @@ void ShowTicketsInfo()
 
 	do
 	{
-		cout << "\t\t*************************************\n";
+		cout << "\t\t*************\n";
 		cout << "\t\t|\tTicket infromations\t   |\n";
-		cout << "\t\t|__________________________________|\n\n";
+		cout << "\t\t|____________|\n\n";
 
 
 
@@ -410,9 +417,9 @@ void ShowTicketsInfo()
 		}
 		if (foundd)
 		{
-			cout << "\n\n***************************************************************************\n\n";
+			cout << "\n\n***************************\n\n";
 			cout << "ID: " << ticket[founded_t].ID << "\t\t" << "Bus Take of time: " << ticket[founded_t].Bus_Take_Of_Time << "\n\n" << "Date of travelling: " << ticket[founded_t].Date_Of_Travelling << "\t\t" << "Bus number: " << ticket[founded_t].BusNumber << "\t\t" << "Bus class: " << ticket[founded_t].BusClass << "\n\n" << "Your destination: " << ticket[founded_t].destination << "\t\t" << "Price: " << ticket[founded_t].Price << "\n\n";
-			cout << "\n\n***************************************************************************\n\n";
+			cout << "\n\n***************************\n\n";
 		}
 		else
 			cout << "Invalid date try again..........\n\n";
@@ -420,32 +427,71 @@ void ShowTicketsInfo()
 	} while (foundd == false);
 
 }
+
 void Bus_Classes()
 {
 	system("cls");
-	char ch, more;
-	cout << "We have 2 classes ( A , B ) \n\n";
+	char ch, more, info_driver;
+	cout << "We have 2 classes ( A , B ) \n";
 
 	do {
-		cout << " Please enter the class you want to inform about : ";
+		cout << " Please enter the class you want information about : ";
 		cin >> ch;
 		switch (ch)
 		{
 		case 'a':
 		case 'A':
-			cout << " A class : \n\n" << "1. air conditioner \n" << "2. one trip ( Less time to reach )\n" << "3. The latest vehicle releases\n"
-				<< "4. super comfortable\n\n";
+			cout << " A class : \n" << "1. air conditioner \n" << "2. one trip ( Less time to reach )\n" << "3. The latest vehicle releases\n"
+				<< "4. super comfortable\n"<< "5. High technology \n" << "6. best drivers --> ";
+			cout << "do you want information about drivers ( y , n ) : ";
+			cin >> info_driver;
+			if (info_driver == 'y' || info_driver == 'Y')
+			{
+				driver_info();
+			}
 			break;
 		case 'b':
 		case 'B':
-			cout << " B class : \n\n" << "1. cheap \n" << "2. many stations \n" << "3. Equipped for long trips \n";
+			cout << " B class : \n" << " 1. cheap \n" << " 2. many stations \n" << " 3. Equipped for long trips \n";
 			break;
 		}
-		cout << " do you want another class \n (y , n )";
+		cout << " do you want another class \n (y , n ) ? : ";
 		cin >> more;
 	} while (more == 'y' || more == 'Y');
 
 }
+
+void driver_info()
+{
+	drivers driver[9];
+	driver[0].ID = 202010;
+	driver[1].ID = 202011;
+	driver[2].ID = 202012;
+	driver[3].ID = 202013;
+	driver[4].ID = 202014;
+	driver[5].ID = 202015;
+	driver[6].ID = 202016;
+	driver[7].ID = 202017;
+	driver[8].ID = 202018;
+
+	driver[0].rate = 5;
+	driver[1].rate = 5;
+	driver[2].rate = 4.9;
+	driver[3].rate = 4.9;
+	driver[4].rate = 4.9;
+	driver[5].rate = 4.7;
+	driver[6].rate = 4.6;
+	driver[7].rate = 4.5;
+	driver[8].rate = 4.5;
+
+	for (int i = 0; i < 9; i++)
+	{
+		cout << "driver " << i + 1 << " ->  ID : " << driver[i].ID
+			<< "  rate : " << driver[i].rate << endl;
+	}
+}
+
+
 void UsersInformation()
 {
 
@@ -497,7 +543,6 @@ void file_in()
 	int i = 0;
 	while (another_file.good())
 	{
-		
 		another_file >> temp[i].BusNumber >> temp[i].No_Of_Seats >> temp[i].Available_No_Of_Seats >> temp[i].No_Of_Trips;
 		for (int j = 0; j < 3; j++)
 			another_file >> temp[i].TripsTime1[j];
@@ -510,7 +555,6 @@ void file_in()
 	int j = 0;
 	while (persons_file.good())
 	{
-	
 		persons_file >> Users[j].name >> Users[j].Age >> Users[j].PhoneNumber >> Users[j].Email >> Users[j].No_Of_Buses_They_Booked >> Users[j].No_Of_Seats_They_Chose;
 		i++;
 	}
